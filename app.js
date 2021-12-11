@@ -12,5 +12,3 @@ fs.writeFile('index.html', generatePage(name, github), err => {
 
     console.log ('Portfolio complete! Checkout index.html to see the output!');
 });
-
-
