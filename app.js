@@ -1,19 +1,14 @@
-// const creates a constant reference to the JavaScript element indicated when it is created. For strings and numbers, the content cannot be altered, because the reference is to the content. For arrays and objects, however, the content can be altered, because the reference is to the container, not to the content.
+const generatePage = require('./Src/page-template');
 
+const fs = require('fs');
+
+// Captures user input data
 const profileDataArgs = process.argv.slice(2, process.argv.length);
-console.log(profileDataArgs);
 
-const printProfileData = profileDataArr => {
-    //This...
-    for (let i = 0; i < profileDataArr.length; i +=1) {
-        console.log(profileDataArr[i]);
-    }
+const [name, github] = profileDataArgs;
 
-    console.log ('=============');
+fs.writeFile('index.html', generatePage(name, github), err => {
+    if (err) throw err;
 
-    //Is the same as this...
-    profileDataArr.forEach(profileItem => console.log (profileItem));
-
-};
-
-printProfileData(profileDataArgs);
+    console.log ('Portfolio complete! Checkout index.html to see the output!');
+});
